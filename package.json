@@ -1,0 +1,85 @@
+{
+  "name": "vue-umeng",
+  "version": "0.0.0",
+  "description": "vue3集成umeng统计",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/*.js",
+    "dist/*.mjs",
+    "dist/*.cjs",
+    "dist/index.d.ts",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "cz": "git-cz",
+    "build": "rimraf dist/* temp/* && rollup -c rollup.config.js",
+    "build:dts": "api-extractor run --local --verbose",
+    "build:all": "yarn build && yarn build:dts",
+    "release": "release-it",
+    "prepare": "husky install"
+  },
+  "keywords": [
+    "vue3",
+    "umeng"
+  ],
+  "author": {
+    "name": "wanjianqiang",
+    "email": "eric_wan2021@163.com"
+  },
+  "license": "MIT",
+  "lint-staged": {
+    "*.js": [
+      "prettier --write"
+    ],
+    "*.ts?(x)": [
+      "prettier --parser=typescript --write"
+    ]
+  },
+  "devDependencies": {
+    "@babel/types": "^7.17.0",
+    "@commitlint/cli": "^16.2.3",
+    "@commitlint/config-conventional": "^16.2.1",
+    "@microsoft/api-extractor": "^7.19.5",
+    "@rollup/plugin-commonjs": "^21.0.2",
+    "@rollup/plugin-node-resolve": "^13.1.3",
+    "@typescript-eslint/eslint-plugin": "^5.15.0",
+    "@typescript-eslint/parser": "^5.15.0",
+    "chalk": "^5.0.1",
+    "commitizen": "^4.2.4",
+    "cross-env": "^7.0.3",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.11.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-vue": "^8.5.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.7",
+    "prettier": "^2.6.0",
+    "release-it": "^14.13.1",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.70.1",
+    "rollup-plugin-typescript2": "^0.31.2",
+    "typescript": "^4.6.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GOGOGOSIR/vue-umeng.git"
+  },
+  "bugs": "https://github.com/GOGOGOSIR/vue-umeng/issues",
+  "engines": {
+    "node": ">=16.0"
+  },
+  "dependencies": {
+    "@vueuse/core": "^8.1.2",
+    "vue": "^3.2.31",
+    "vue-router": "^4.0.14"
+  }
+}

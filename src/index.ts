@@ -42,12 +42,14 @@ export default {
           initUMeng(options)
 
           if (!options.autoSendPv) {
-            router.afterEach((to, from) => {
-              sendPV({
-                toFullPath: to.fullPath,
-                fromFullPath: from.fullPath,
-              })
-            })
+            router.afterEach(
+              (to: Record<string, any>, from: Record<string, any>) => {
+                sendPV({
+                  toFullPath: to.fullPath,
+                  fromFullPath: from.fullPath,
+                })
+              },
+            )
           }
 
           if (injectGlobalMixins) {

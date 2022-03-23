@@ -18,7 +18,7 @@
     "build": "rimraf dist/* temp/* && rollup -c rollup.config.js",
     "build:dts": "api-extractor run --local --verbose",
     "build:all": "yarn build && yarn build:dts",
-    "release": "release-it --config ./.release-it.js",
+    "release": "yarn build:all && release-it --config ./.release-it.js",
     "prepare": "husky install"
   },
   "keywords": [
@@ -79,7 +79,6 @@
   },
   "dependencies": {
     "@vueuse/core": "^8.1.2",
-    "vue": "^3.2.31",
-    "vue-router": "^4.0.14"
+    "vue": "^3.2.31"
   }
 }

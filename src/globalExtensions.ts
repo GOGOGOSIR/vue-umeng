@@ -1,9 +1,8 @@
 import { sendPV, trackEvent } from './umeng'
-import type { Router } from 'vue-router'
 
 export interface Config {
   mode: 'production' | 'development'
-  router: Router
+  router: Record<string, any>
   options: {
     appKey: string // appKey
     autoSendPv?: boolean // Whether to automatically send pv, the default is false

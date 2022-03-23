@@ -18,7 +18,7 @@
     "build": "rimraf dist/* temp/* && rollup -c rollup.config.js",
     "build:dts": "api-extractor run --local --verbose",
     "build:all": "yarn build && yarn build:dts",
-    "release": "release-it",
+    "release": "release-it --config ./.release-it.js",
     "prepare": "husky install"
   },
   "keywords": [

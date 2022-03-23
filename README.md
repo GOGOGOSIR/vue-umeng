@@ -20,7 +20,7 @@ import uMeng from 'vue-umeng'
 
 app.use(uMeng, {
   router, // vue-router 的实例
-  mode: import.meta.env.PROD ? 'production' : 'development', // vite 使用 import.meta.env， webpack 使用 process.env.NODE_ENV 判断生产和测试环境，仅有 mode === 'production' 才会执行友盟的统计
+  mode: '当前的运行环境', // vite 使用 import.meta.env， webpack 使用 process.env.NODE_ENV 判断生产和测试环境，仅有 mode === 'production' 才会执行友盟的统计
   options: {
     appKey: '622872ea317aa8778288ca34b', // 友盟的appKey，这里可以根据不同的环境传入不同的 appKey
   },

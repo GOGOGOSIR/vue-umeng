@@ -20,15 +20,15 @@ export default {
       )
     }
 
+    if (mode === 'development') {
+      return
+    }
+
     if (!options.appKey) {
       throw new Error('appKey cannot be undefined')
     }
 
     if (!window) {
-      return
-    }
-
-    if (mode === 'development') {
       return
     }
 

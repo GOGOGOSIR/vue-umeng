@@ -1,13 +1,11 @@
 import { useScriptTag } from '@vueuse/core'
 import { initUMeng, sendPV, trackEvent } from './umeng'
-import type { App } from 'vue'
 import type { Config } from './globalExtensions'
-
 export { sendPV, trackEvent } from './umeng'
 export * from './globalExtensions'
 
 export default {
-  install: async (app: App, config: Config) => {
+  install: async (app: any, config: Config) => {
     const { router, mode, options } = config
 
     if (!router) {

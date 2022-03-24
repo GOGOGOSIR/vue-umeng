@@ -74,9 +74,6 @@
     "url": "https://github.com/GOGOGOSIR/vue-umeng.git"
   },
   "bugs": "https://github.com/GOGOGOSIR/vue-umeng/issues",
-  "engines": {
-    "node": ">=16.0"
-  },
   "dependencies": {
     "@vueuse/core": "^8.1.2",
     "vue": "^3.2.31"

@@ -76,6 +76,6 @@
   "bugs": "https://github.com/GOGOGOSIR/vue-umeng/issues",
   "dependencies": {
     "@vueuse/core": "^8.1.2",
-    "vue": "^3.2.31"
+    "vue": "^3.2.0"
   }
 }

@@ -65,6 +65,12 @@ import { sendPV } from 'vue-umeng'
 import { trackEvent } from 'vue-umeng'
 ```
 
+## Q&A
+
+1. 在使用时报 `xxx Plugin_2相比，堆栈深度过高`
+
+解决方案：请将项目的`vue`版本升级至@3.2.0 及其以上的版本
+
 ## License
 
 [MIT](http://opensource.org/licenses/MIT)

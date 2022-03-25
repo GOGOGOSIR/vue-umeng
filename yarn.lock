@@ -4088,6 +4088,11 @@ vue-eslint-parser@^8.0.1:
     lodash "^4.17.21"
     semver "^7.3.5"
 
+vue-router@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-4.0.0.tgz#1fbf642ec66a6b06305af288b70cc2ad6ff2b9d3"
+  integrity sha512-RiAsDsSV73TBqppgpAKghb5exHHKsFuTii7hbhj9QHjWJNDE4lBDTr7bVALG9DH9vVcFI+7PUTBGYbytBFsWsQ==
+
 vue@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/vue/-/vue-3.2.0.tgz#81306934369446b46d1aaed9a9a986b79afdba96"

@@ -1,8 +1,9 @@
 import { sendPV, trackEvent } from './umeng'
+import type { Router } from 'vue-router'
 
 export interface Config {
   mode: 'production' | 'development'
-  router: Record<string, any>
+  router: Router
   options: {
     appKey: string // appKey
     autoSendPv?: boolean // Whether to automatically send pv, the default is false
@@ -21,11 +22,4 @@ export type UMengMixinPropertiesType = {
 
 export interface Window {
   [key: string]: any
-}
-
-declare module '@vue/runtime-core' {
-  interface ComponentCustomProperties {
-    readonly sendPVByUMeng?: UMengMixinPropertiesType['sendPV']
-    readonly trackEvenByUMeng?: UMengMixinPropertiesType['trackEvent']
-  }
 }

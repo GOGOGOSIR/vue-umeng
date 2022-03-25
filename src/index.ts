@@ -1,11 +1,13 @@
 import { useScriptTag } from '@vueuse/core'
 import { initUMeng, sendPV, trackEvent } from './umeng'
 import type { Config } from './globalExtensions'
+import type { App } from 'vue'
+
 export { sendPV, trackEvent } from './umeng'
 export * from './globalExtensions'
 
 export default {
-  install: async (app: any, config: Config) => {
+  install: async (app: App, config: Config) => {
     const { router, mode, options } = config
 
     if (!router) {
@@ -40,14 +42,12 @@ export default {
           initUMeng(options)
 
           if (!options.autoSendPv) {
-            router.afterEach(
-              (to: Record<string, any>, from: Record<string, any>) => {
-                sendPV({
-                  toFullPath: to.fullPath,
-                  fromFullPath: from.fullPath,
-                })
-              },
-            )
+            router.afterEach((to, from) => {
+              sendPV({
+                toFullPath: to.fullPath,
+                fromFullPath: from.fullPath,
+              })
+            })
           }
 
           if (injectGlobalMixins) {
@@ -57,7 +57,7 @@ export default {
                   sendPV(params)
                 },
 
-                trackEvenByUMeng(
+                trackEventByUMeng(
                   eventCode: string,
                   eventParams: Record<string, unknown>,
                   eventType = 'CLK',

@@ -42,7 +42,7 @@ app.use(uMeng, {
   - injectGlobalMixins 是否将友盟的事件方法全局注册到 mixin 中（非必传），type: boolean, default: false
     注册的方法有：[参考友盟文档](https://developer.umeng.com/docs/147615/detail/290919)
     - sendPVByUMeng 发送 pv， type: (params: Record<string, unknown>): void
-    - trackEvenByUMeng 事件上报，type: (eventCode: string, eventParams: Record<string, unknown>, eventType?: string): void
+    - trackEventByUMeng 事件上报，type: (eventCode: string, eventParams: Record<string, unknown>, eventType?: string): void
       - eventCode: 事件 ID 或 事件编码
       - eventParams: 为本次事件中上报的事件参数。其取值为一个 JSON 对象（平铺的简单对象，不能多层嵌套）
       - eventType: 事件类型，默认是方法 'CLK'
@@ -57,12 +57,28 @@ app.use(uMeng, {
 import { sendPV } from 'vue-umeng'
 ```
 
-- trackEvent 同上述的 trackEvenByUMeng
+- trackEvent 同上述的 trackEventByUMeng
 
 使用：
 
 ```js
 import { trackEvent } from 'vue-umeng'
+```
+
+## ts 类型的扩展
+
+如果你开启了全局注册 mixins 则要添加 vue 的类型扩展
+
+```js
+// vue-custom.d.ts
+import type { UMengMixinPropertiesType } from 'vue-umeng'
+
+declare module '@vue/runtime-core' {
+  interface ComponentCustomProperties {
+    readonly sendPVByUMeng: UMengMixinPropertiesType['sendPV']
+    readonly trackEventByUMeng: UMengMixinPropertiesType['trackEvent']
+  }
+}
 ```
 
 ## Q&A

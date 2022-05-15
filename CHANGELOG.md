@@ -1,3 +1,62 @@
+# CHANGE_LOGS
+
+# [0.1.0](https://github.com/GOGOGOSIR/vue-umeng/compare/0.0.7...v0.1.0) (2022-05-15)
+
+
+### Features
+
+* 同时支持vue2和vue3 ([7fd0221](https://github.com/GOGOGOSIR/vue-umeng/commit/7fd02211fab11be10632b06092a69ff8ef6af3a8))
+* 新增 iife 打包格式,优化 release 脚本 ([aaff555](https://github.com/GOGOGOSIR/vue-umeng/commit/aaff555f70a24f88493afc2520f6a24029777cbe))
+
+
+
+## [0.0.7](https://github.com/GOGOGOSIR/vue-umeng/compare/0.0.6...0.0.7) (2022-03-26)
+
+
+
+## [0.0.6](https://github.com/GOGOGOSIR/vue-umeng/compare/0.0.5...0.0.6) (2022-03-25)
+
+
+
+## [0.0.5](https://github.com/GOGOGOSIR/vue-umeng/compare/0.0.4...0.0.5) (2022-03-24)
+
+
+### Features
+
+* **package.json:** 将vue依赖添加至peerDependencies中 ([62bd00d](https://github.com/GOGOGOSIR/vue-umeng/commit/62bd00de699401a64ce7d513efff38346c5b66fd))
+
+
+
+## [0.0.4](https://github.com/GOGOGOSIR/vue-umeng/compare/0.0.3...0.0.4) (2022-03-24)
+
+
+### Bug Fixes
+
+* **package.json:** 修复与类型“Plugin_2”和“Plugin_2”相比，堆栈深度过高 ([3d0cb11](https://github.com/GOGOGOSIR/vue-umeng/commit/3d0cb11ecba7f4cce553deaffd95cb7ca85641e0))
+
+
+
+## [0.0.3](https://github.com/GOGOGOSIR/vue-umeng/compare/0.0.2...0.0.3) (2022-03-24)
+
+
+
+## [0.0.2](https://github.com/GOGOGOSIR/vue-umeng/compare/0.0.1...0.0.2) (2022-03-23)
+
+
+### Bug Fixes
+
+* **all:** 修复 vue-router 类型重复声明导致报错的问题 ([352e527](https://github.com/GOGOGOSIR/vue-umeng/commit/352e527b103388494f388e8824fa5ce40ecbbd62))
+
+
+
+## [0.0.1](https://github.com/GOGOGOSIR/vue-umeng/compare/4273efba8de5c3e64b2e1bcccb2af1b67ca18e53...0.0.1) (2022-03-23)
+
+
+### Features
+
+* **.release-it.js:** 新增release-it的配置 ([ce1bb48](https://github.com/GOGOGOSIR/vue-umeng/commit/ce1bb48d42a41268c25e0d5c7052fd48244c0f11))
+* **all:** init package ([4273efb](https://github.com/GOGOGOSIR/vue-umeng/commit/4273efba8de5c3e64b2e1bcccb2af1b67ca18e53))
+
 ### Changelog
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.

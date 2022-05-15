@@ -1,6 +1,6 @@
 {
   "name": "vue-umeng",
-  "version": "0.0.7",
+  "version": "0.1.0",
   "description": "vue集成umeng统计",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",

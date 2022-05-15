@@ -1,13 +1,27 @@
+<p align='left'>
+  <a href='https://www.npmjs.com/package/vue-umeng'>
+    <img src="https://img.shields.io/npm/v/vue-umeng?color=41b883&label=npm" />
+  </a>
+</p>
+
 # vue-umeng
 
-基于 `vue3` 封装友盟统计
+基于 `vue` 封装友盟统计
 
 ## 安装
+
+1. 包的安装
 
 ```bash
 yarn add vue-umeng
 # or with npm
 npm install vue-umeng
+```
+
+2. CDN
+
+```
+<script src="https://unpkg.com/vue-umeng/dist/index.min.js"></script>
 ```
 
 ## 使用
@@ -63,6 +77,15 @@ import { sendPV } from 'vue-umeng'
 
 ```js
 import { trackEvent } from 'vue-umeng'
+
+trackEvent(
+  'click_client_refresh_button',
+  {
+    agentId: `ID:${agentId}`,
+    eventName: '下拉刷新的触发事件',
+  },
+  'CLK',
+)
 ```
 
 ## ts 类型的扩展
@@ -80,12 +103,6 @@ declare module '@vue/runtime-core' {
   }
 }
 ```
-
-## Q&A
-
-1. 在使用时报 `xxx Plugin_2相比，堆栈深度过高`
-
-解决方案：请将项目的`vue`版本升级至@3.2.0 及其以上的版本
 
 ## License
 

@@ -10,7 +10,7 @@ module.exports = {
     release: true,
   },
   hooks: {
-    'after:release': 'yarn build:all',
+    'after:version:bump': 'yarn build:all',
   },
   plugins: {
     '@release-it/conventional-changelog': {

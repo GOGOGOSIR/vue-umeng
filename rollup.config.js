@@ -2,6 +2,7 @@ import path from 'path'
 import ts from 'rollup-plugin-typescript2'
 import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
+import { terser } from 'rollup-plugin-terser'
 
 const pkg = require(path.resolve(__dirname, `package.json`))
 
@@ -35,12 +36,20 @@ const outputConfigs = {
     file: pkg.module.replace('mjs', 'cjs'),
     format: `cjs`,
   },
+  global: {
+    file: pkg.unpkg,
+    format: `iife`,
+  },
 }
 
 const packageBuilds = Object.keys(outputConfigs)
-const packageConfigs = packageBuilds.map((format) =>
-  createConfig(format, outputConfigs[format]),
-)
+const packageConfigs = packageBuilds.map((format) => {
+  if (format === 'global') {
+    return createMinifiedConfig(format)
+  } else {
+    return createConfig(format, outputConfigs[format])
+  }
+})
 
 export default packageConfigs
 
@@ -50,7 +59,7 @@ function createConfig(buildName, output, plugins = []) {
     process.exit(1)
   }
 
-  output.exports = 'named'
+  // output.exports = 'named'
   output.sourcemap = false
   output.banner = banner
   output.externalLiveBindings = false
@@ -88,4 +97,24 @@ function createConfig(buildName, output, plugins = []) {
     plugins: [tsPlugin, ...nodePlugins, ...plugins],
     output,
   }
+}
+
+function createMinifiedConfig(format) {
+  return createConfig(
+    format,
+    {
+      file: `dist/index.min.js`,
+      format: outputConfigs[format].format,
+    },
+    [
+      terser({
+        module: /^esm/.test(format),
+        compress: {
+          ecma: 2015,
+          pure_getters: true,
+          pure_funcs: ['console.log'],
+        },
+      }),
+    ],
+  )
 }

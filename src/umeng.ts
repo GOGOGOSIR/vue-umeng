@@ -56,7 +56,6 @@ export function trackEvent(
   if (!aplus_queue) {
     return
   }
-  console.log('触发事件日志')
   aplus_queue.push({
     action: 'aplus.record',
     arguments: [eventCode, eventType, eventParams],

@@ -20,7 +20,4 @@ module.exports = {
       ignoreRecommendedBump: true,
     },
   },
-  npm: {
-    publish: false,
-  },
 }

@@ -2,13 +2,25 @@ module.exports = {
   git: {
     requireBranch: 'master',
     commitMessage: 'chore: release v${version}',
-    changelog:
-      'npx auto-changelog --stdout --commit-limit false -u --template https://raw.githubusercontent.com/release-it/release-it/master/templates/changelog-compact.hbs',
+    requireCommits: true,
+    tagName: 'v${version}',
+    tagAnnotation: `release date: ${new Date().toLocaleString()}`,
   },
   github: {
     release: true,
   },
   hooks: {
-    'after:bump': 'npx auto-changelog -p',
+    'after:release': 'yarn build:all',
+  },
+  plugins: {
+    '@release-it/conventional-changelog': {
+      preset: 'angular',
+      infile: 'CHANGELOG.md',
+      header: '# CHANGE_LOGS',
+      ignoreRecommendedBump: true,
+    },
+  },
+  npm: {
+    publish: false,
   },
 }

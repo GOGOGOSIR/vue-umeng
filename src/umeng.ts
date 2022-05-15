@@ -8,8 +8,6 @@ export function initUMeng(options: Options) {
 
   const { appKey, autoSendPv = false, debug = false, globalproperty } = options
 
-  console.log('>>>> init umeng <<<<')
-
   aplus_queue.push({
     action: 'aplus.setMetaInfo',
     arguments: ['appKey', appKey],

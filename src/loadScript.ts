@@ -7,7 +7,7 @@ const noop = () => {
 export default function loadScript(
   src: string,
   onLoaded: (el: HTMLScriptElement) => void = noop,
-  options: LoadScriptOptions = {},
+  options: LoadScriptOptions = {}
 ) {
   const {
     immediate = true,
@@ -19,14 +19,14 @@ export default function loadScript(
     noModule,
     defer,
     document = window.document,
-    attrs = {},
+    attrs = {}
   } = options
 
   let scriptTag: HTMLScriptElement | null = null
   let _promise: Promise<HTMLScriptElement | boolean> | null = null
 
   const createScript = (
-    waitForScriptLoad: boolean,
+    waitForScriptLoad: boolean
   ): Promise<HTMLScriptElement | boolean> =>
     new Promise((resolve, reject) => {
       const resolveWithElement = (el: HTMLScriptElement) => {
@@ -50,21 +50,20 @@ export default function loadScript(
         el.async = async
         el.src = src
 
-        if (defer) {
+        if (defer)
           el.defer = defer
-        }
-        if (crossOrigin) {
+
+        if (crossOrigin)
           el.crossOrigin = crossOrigin
-        }
-        if (noModule) {
+
+        if (noModule)
           el.noModule = noModule
-        }
-        if (referrerPolicy) {
+
+        if (referrerPolicy)
           el.referrerPolicy = referrerPolicy
-        }
 
         Object.entries(attrs).forEach(([name, value]) =>
-          el?.setAttribute(name, value),
+          el?.setAttribute(name, value)
         )
 
         shouldAppend = true
@@ -73,8 +72,8 @@ export default function loadScript(
       }
 
       // Event listeners
-      el.addEventListener('error', (event) => reject(event))
-      el.addEventListener('abort', (event) => reject(event))
+      el.addEventListener('error', event => reject(event))
+      el.addEventListener('abort', event => reject(event))
       el.addEventListener('load', () => {
         if (el) {
           el.setAttribute('data-loaded', 'true')
@@ -84,45 +83,38 @@ export default function loadScript(
         }
       })
 
-      if (shouldAppend) {
+      if (shouldAppend)
         el = document.head.appendChild(el)
-      }
 
-      if (!waitForScriptLoad) {
+      if (!waitForScriptLoad)
         resolveWithElement(el)
-      }
     })
 
   const load = (
-    waitForScriptLoad = true,
+    waitForScriptLoad = true
   ): Promise<HTMLScriptElement | boolean> => {
-    if (!_promise) {
+    if (!_promise)
       _promise = createScript(waitForScriptLoad)
-    }
 
     return _promise
   }
 
   const unload = () => {
-    if (!document) {
+    if (!document)
       return
-    }
 
     _promise = null
 
-    if (scriptTag) {
+    if (scriptTag)
       scriptTag = null
-    }
 
     const el = document.querySelector<HTMLScriptElement>(`script[src="${src}"]`)
-    if (el) {
+    if (el)
       document.head.removeChild(el)
-    }
   }
 
-  if (immediate && !manual) {
+  if (immediate && !manual)
     load()
-  }
 
   return { scriptTag, load, unload }
 }

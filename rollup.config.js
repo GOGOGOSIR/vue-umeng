@@ -4,16 +4,17 @@ import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import { terser } from 'rollup-plugin-terser'
 
-const pkg = require(path.resolve(__dirname, `package.json`))
+const pkg = require(path.resolve(__dirname, 'package.json'))
 
 function getAuthors(pkg) {
   const { contributors, author } = pkg
 
   const authors = new Set()
-  if (contributors && contributors)
+  if (contributors && contributors) {
     contributors.forEach((contributor) => {
       authors.add(contributor.name)
     })
+  }
   if (author) authors.add(author.name)
 
   return Array.from(authors).join(', ')
@@ -30,25 +31,24 @@ let hasTSChecked = false
 const outputConfigs = {
   mjs: {
     file: pkg.module,
-    format: `es`,
+    format: 'es'
   },
   cjs: {
     file: pkg.module.replace('mjs', 'cjs'),
-    format: `cjs`,
+    format: 'cjs'
   },
   global: {
     file: pkg.unpkg,
-    format: `iife`,
-  },
+    format: 'iife'
+  }
 }
 
 const packageBuilds = Object.keys(outputConfigs)
 const packageConfigs = packageBuilds.map((format) => {
-  if (format === 'global') {
+  if (format === 'global')
     return createMinifiedConfig(format)
-  } else {
+  else
     return createConfig(format, outputConfigs[format])
-  }
 })
 
 export default packageConfigs
@@ -65,7 +65,7 @@ function createConfig(buildName, output, plugins = []) {
   output.externalLiveBindings = false
   output.globals = {
     'vue-router': 'VueRouter',
-    vue: 'Vue',
+    vue: 'Vue'
   }
 
   const shouldEmitDeclarations = !hasTSChecked
@@ -78,11 +78,11 @@ function createConfig(buildName, output, plugins = []) {
       compilerOptions: {
         sourceMap: output.sourcemap,
         declaration: shouldEmitDeclarations,
-        declarationMap: shouldEmitDeclarations,
+        declarationMap: shouldEmitDeclarations
       },
       // TODO: add test
-      exclude: ['src/*/__tests__', 'src/*/test-dts'],
-    },
+      exclude: ['src/*/__tests__', 'src/*/test-dts']
+    }
   })
 
   hasTSChecked = true
@@ -92,10 +92,10 @@ function createConfig(buildName, output, plugins = []) {
   const nodePlugins = [resolve(), commonjs()]
 
   return {
-    input: `src/index.ts`,
+    input: 'src/index.ts',
     external,
     plugins: [tsPlugin, ...nodePlugins, ...plugins],
-    output,
+    output
   }
 }
 
@@ -103,8 +103,8 @@ function createMinifiedConfig(format) {
   return createConfig(
     format,
     {
-      file: `dist/index.min.js`,
-      format: outputConfigs[format].format,
+      file: 'dist/index.min.js',
+      format: outputConfigs[format].format
     },
     [
       terser({
@@ -112,9 +112,9 @@ function createMinifiedConfig(format) {
         compress: {
           ecma: 2015,
           pure_getters: true,
-          pure_funcs: ['console.log'],
-        },
-      }),
-    ],
+          pure_funcs: ['console.log']
+        }
+      })
+    ]
   )
 }

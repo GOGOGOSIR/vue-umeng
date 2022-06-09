@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { sendPV, trackEvent } from './umeng'
 
 type ReferrerPolicy =
@@ -33,9 +34,7 @@ export type UMengMixinPropertiesType = {
   trackEvent: typeof trackEvent
 }
 
-export interface Window {
-  [key: string]: any
-}
+export type Window = Record<string, any>
 
 export interface LoadScriptOptions {
   /**

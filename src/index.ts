@@ -9,27 +9,23 @@ export default {
   install: async (app: Record<string, any>, config: Config) => {
     const { router, mode, options } = config
 
-    if (!router) {
+    if (!router)
       throw new Error('router cannot be undefined')
-    }
 
     if (!mode || !['development', 'production'].includes(mode)) {
       throw new Error(
-        'please pass in mode, and the value of mode is development or production',
+        'please pass in mode, and the value of mode is development or production'
       )
     }
 
-    if (mode === 'development') {
+    if (mode === 'development')
       return
-    }
 
-    if (!options.appKey) {
+    if (!options.appKey)
       throw new Error('appKey cannot be undefined')
-    }
 
-    if (!window) {
+    if (!window)
       return
-    }
 
     try {
       // load umeng script
@@ -44,13 +40,14 @@ export default {
             router.afterEach((to, from) => {
               sendPV({
                 toFullPath: to.fullPath,
-                fromFullPath: from.fullPath,
+                fromFullPath: from.fullPath
               })
             })
           }
 
           if (injectGlobalMixins) {
             app.mixin({
+              // eslint-disable-next-line vue/component-api-style
               methods: {
                 sendPVByUMeng(params: Record<string, unknown>) {
                   sendPV(params)
@@ -59,22 +56,22 @@ export default {
                 trackEventByUMeng(
                   eventCode: string,
                   eventParams: Record<string, unknown>,
-                  eventType = 'CLK',
+                  eventType = 'CLK'
                 ) {
                   trackEvent(eventCode, eventParams, eventType)
-                },
-              },
+                }
+              }
             })
           }
         },
         {
           attrs: {
-            id: 'beacon-aplus',
-          },
-        },
+            id: 'beacon-aplus'
+          }
+        }
       )
     } catch (err) {
       console.warn('umeng script load error:', err)
     }
-  },
+  }
 }

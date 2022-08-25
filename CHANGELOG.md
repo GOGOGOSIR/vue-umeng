@@ -1,5 +1,12 @@
 # CHANGE_LOGS
 
+# [0.2.0](https://github.com/GOGOGOSIR/vue-umeng/compare/v0.1.0...v0.2.0) (2022-08-25)
+
+
+### Features
+
+* 新增 beforeSendPV, beforeTrackEvent, afterSendPv, afterTrackEvent 配置 ([b063358](https://github.com/GOGOGOSIR/vue-umeng/commit/b06335868c34a763bd2da376880cdbcefc6686ef))
+
 # [0.1.0](https://github.com/GOGOGOSIR/vue-umeng/compare/0.0.7...v0.1.0) (2022-05-15)
 
 

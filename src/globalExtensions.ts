@@ -24,6 +24,10 @@ export interface Config {
     debug?: boolean // Whether to enable debug mode, the default is false
     globalproperty?: Record<string, unknown> // Global properties, after setting global properties, custom events and PVs will be reported with
     injectGlobalMixins?: boolean // Whether to register some public methods of Umeng into the global mixin
+    beforeSendPv?: (params: Record<string, any>) => void // Callback executed before sendPv method is triggered
+    beforeTrackEvent?: (eventCode: string, eventParams: Record<string, any>) => void // Callback executed before trackEvent method is triggered
+    afterSendPv?: (params: Record<string, any>) => void
+    afterTrackEvent?: (eventCode: string, eventParams: Record<string, any>) => void
   }
 }
 

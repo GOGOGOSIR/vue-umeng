@@ -2,11 +2,26 @@
   "name": "vue-umeng",
   "version": "0.1.0",
   "description": "vue集成umeng统计",
+  "keywords": [
+    "vue",
+    "vue2",
+    "vue3",
+    "umeng"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "ericwan",
+    "email": "eric_wan2021@163.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GOGOGOSIR/vue-umeng.git"
+  },
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "unpkg": "dist/index.min.js",
   "jsdelivr": "dist/index.min.js",
-  "types": "dist/index.d.ts",
   "files": [
     "dist/*.js",
     "dist/*.mjs",
@@ -23,28 +38,17 @@
     "release": "release-it --config ./.release-it.js",
     "prepare": "husky install"
   },
-  "keywords": [
-    "vue",
-    "vue2",
-    "vue3",
-    "umeng"
-  ],
-  "author": {
-    "name": "wanjianqiang",
-    "email": "eric_wan2021@163.com"
+  "peerDependencies": {
+    "vue": ">=^2.6.10 || >=^3.2.0",
+    "vue-router": ">=^3.0.0 || >=^4.0.0"
   },
-  "license": "MIT",
-  "lint-staged": {
-    "*.{js,ts}": [
-      "eslint --fix"
-    ]
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/types": "^7.17.0",
     "@commitlint/cli": "^16.2.3",
     "@commitlint/config-conventional": "^16.2.1",
-    "@gogogosir/eslint-config": "^0.0.1",
-    "@gogogosir/prettier-config": "^0.0.1",
+    "@gogogosir/eslint-config": "^0.0.4",
+    "@gogogosir/prettier-config": "^0.0.4",
     "@microsoft/api-extractor": "^7.19.5",
     "@release-it/conventional-changelog": "^4.3.0",
     "@rollup/plugin-commonjs": "^21.0.2",
@@ -64,19 +68,15 @@
     "rollup-plugin-typescript2": "^0.31.2",
     "typescript": "^4.6.2"
   },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "eslint --fix"
+    ]
+  },
   "config": {
     "commitizen": {
       "path": "node_modules/cz-conventional-changelog"
     }
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/GOGOGOSIR/vue-umeng.git"
-  },
-  "bugs": "https://github.com/GOGOGOSIR/vue-umeng/issues",
-  "dependencies": {},
-  "peerDependencies": {
-    "vue": ">=^2.6.10 || >=^3.2.0",
-    "vue-router": ">=^3.0.0 || >=^4.0.0"
-  }
+  "bugs": "https://github.com/GOGOGOSIR/vue-umeng/issues"
 }
